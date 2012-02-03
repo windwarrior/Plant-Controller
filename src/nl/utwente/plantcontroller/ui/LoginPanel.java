@@ -3,6 +3,8 @@ package nl.utwente.plantcontroller.ui;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -10,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class LoginPanel extends JPanel{
+public class LoginPanel extends JPanel implements ActionListener{
     private static final long serialVersionUID = 407324739824395920L;
     
     private JTextField name = new JTextField();
@@ -25,6 +27,8 @@ public class LoginPanel extends JPanel{
     }
     
     public void init(){
+        login.addActionListener(this);
+        
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
@@ -66,5 +70,15 @@ public class LoginPanel extends JPanel{
         c.gridwidth = 2;
         c.insets = new Insets(5, 5, 5, 5);
         this.add(errorLabel, c);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent arg0) {
+        if(arg0.getSource().equals(login)){
+            if(name.getText() != ""){
+                errorLabel.setText("woei, jrebel");
+               
+            }
+        }
     }
 }

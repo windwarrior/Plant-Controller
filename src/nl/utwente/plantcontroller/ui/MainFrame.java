@@ -2,6 +2,8 @@ package nl.utwente.plantcontroller.ui;
 
 
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class MainFrame extends JFrame{
     private LoginPanel loginPanel = new LoginPanel();
