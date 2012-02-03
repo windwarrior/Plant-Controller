@@ -66,6 +66,9 @@ public interface AccountRechten {
      */
     public boolean canAddDeliveryToSystem();
     
-    
+    /**
+     * truen als een gebruiker gegevens van alle accounts kan bekijken
+     * @return
+     */
     public boolean canCheckAccounts();
 }
