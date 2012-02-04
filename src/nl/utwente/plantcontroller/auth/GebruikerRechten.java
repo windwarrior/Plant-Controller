@@ -1,6 +1,6 @@
 package nl.utwente.plantcontroller.auth;
 
-public class GebruikerRechten implements AccountRechten{
+public class GebruikerRechten implements AccountRechten {
 
     @Override
     public boolean canLogin() {

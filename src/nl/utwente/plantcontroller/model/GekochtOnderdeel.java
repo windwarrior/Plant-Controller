@@ -1,5 +1,4 @@
 package nl.utwente.plantcontroller.model;
 
-public class GekochtOnderdeel extends Onderdeel{
-
+public class GekochtOnderdeel extends Onderdeel {
 }

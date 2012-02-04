@@ -1,6 +1,6 @@
 package nl.utwente.plantcontroller.auth;
 
-public class RootRechten extends GebruikerRechten{
+public class RootRechten extends GebruikerRechten {
     @Override
     public boolean canLogin() {
         return true;
