@@ -24,4 +24,8 @@ public class KlantenRol extends GebruikersRol {
 	public AccountRechten getRechten(){
 	    return rechten;
 	}
+	
+	public String toString(){
+	    return naam;
+	}
 }

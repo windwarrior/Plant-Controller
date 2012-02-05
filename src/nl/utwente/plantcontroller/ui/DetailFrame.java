@@ -8,6 +8,7 @@ import java.awt.Insets;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -23,7 +24,7 @@ public class DetailFrame extends JFrame{
     private JLabel idLabel = new JLabel("ID: ");
     private JTextField idField = new JTextField();
     DefaultTableModel model = new DefaultTableModel();
-    private JTable tableForOrders = new JTable(model);
+    private JTable tableForOrders;
     
     
     public DetailFrame(Bestelling b) {
@@ -32,7 +33,7 @@ public class DetailFrame extends JFrame{
     }
     private void init() {
         this.setLayout(new BorderLayout());
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.setSize(600,480);
         idField.setEditable(false);
         klantField.setEditable(false);
         idField.setText("" + b.getId());
@@ -40,6 +41,7 @@ public class DetailFrame extends JFrame{
         model.addColumn("Hoeveelheid");
         model.addColumn("stukprijs");
         model.addColumn("totaalprijs");
+        tableForOrders  = new JTable(model);
         klantField.setText("" + b.getKlant());
         
         pan.setLayout(new GridBagLayout());
@@ -61,13 +63,13 @@ public class DetailFrame extends JFrame{
         c.gridx = 1;
         c.gridy = 0;
         c.insets = new Insets(5, 5, 5, 5);
-        pan.add(idField, c);
+        pan.add(klantField, c);
         
         c = new GridBagConstraints();
         c.gridx = 1;
         c.gridy = 1;
         c.insets = new Insets(5, 5, 5, 5);
-        pan.add(klantField, c);
+        pan.add(idField, c);
         
         this.add(pan, BorderLayout.NORTH);
         
@@ -75,6 +77,7 @@ public class DetailFrame extends JFrame{
             model.addRow(new Object[]{bi.getProduct(), bi.getAantal(), bi.getProduct().getPrijs(), bi.getPrijs()});
         }
         
+        this.add(new JScrollPane(tableForOrders, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER ), BorderLayout.CENTER);
         this.setVisible(true);
         
     }
