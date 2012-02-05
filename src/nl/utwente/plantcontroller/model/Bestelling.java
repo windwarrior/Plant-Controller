@@ -55,4 +55,8 @@ public class Bestelling {
 	    return result;
 	}
 	
+	public List<BestelItem> getBestelItems(){
+	    return bestelItems;
+	}
+	
 }

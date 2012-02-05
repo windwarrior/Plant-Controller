@@ -12,12 +12,13 @@ public class MainPanel extends JTabbedPane implements ChangeListener{
     private Gebruiker g;
     private BestelPaneel p;
     private AlleBestellingenPaneel a; 
-
+    private VoegGebruikerToePaneel v;
     public MainPanel(Fabriek fabriek, Gebruiker g){
         this.fabriek = fabriek;
         this.g = g;
         p = new BestelPaneel(g, fabriek);
         a = new AlleBestellingenPaneel(fabriek);
+        v = new VoegGebruikerToePaneel(fabriek);
         init();
     }
     
@@ -25,6 +26,7 @@ public class MainPanel extends JTabbedPane implements ChangeListener{
         this.addChangeListener(this);
         this.addTab("Bestel", p);
         this.addTab("Alle Bestelingen", a);
+        this.addTab("Gebruiker toevoegen", v);
     }
 
     @Override

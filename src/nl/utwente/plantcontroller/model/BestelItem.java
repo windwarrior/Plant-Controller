@@ -25,4 +25,12 @@ public class BestelItem {
     public String toString(){
         return product.toString() + " "  + aantal;
     }
+    
+    public Product getProduct(){
+        return product;
+    }
+    
+    public int getAantal(){
+        return aantal;
+    }
 }

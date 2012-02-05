@@ -1,18 +1,13 @@
 package nl.utwente.plantcontroller.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Gebruiker {
     private String inlognaam;
     private String password;
-    private List<Gebruikersrol> rollen = new ArrayList<Gebruikersrol>();
-
-    public Gebruiker(String inlognaam, String password,
-            List<Gebruikersrol> rollen) {
+    private GebruikersRol rol;
+    public Gebruiker(String inlognaam, String password,GebruikersRol rol) {
         this.inlognaam = inlognaam;
         this.password = password;
-        this.rollen = rollen;
+        this.rol = rol;
     }
     
     public String getInlogNaam(){
@@ -23,8 +18,8 @@ public class Gebruiker {
         return this.password.equals(password);
     }
     
-    public List<Gebruikersrol> getRollen(){
-        return rollen;
+    public GebruikersRol getRol(){
+        return rol;
     }
 
 }

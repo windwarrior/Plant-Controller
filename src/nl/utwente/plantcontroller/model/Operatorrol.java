@@ -1,4 +1,4 @@
 package nl.utwente.plantcontroller.model;
 
-public class Operatorrol extends Gebruikersrol {
+public class Operatorrol extends GebruikersRol {
 }

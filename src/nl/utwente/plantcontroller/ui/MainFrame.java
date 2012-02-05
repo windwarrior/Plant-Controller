@@ -18,7 +18,7 @@ public class MainFrame extends JFrame{
     }
 
     private void init() {
-        this.setSize(400,200);
+        this.setSize(600,480);
         this.getContentPane().add(loginPanel);
         this.setVisible(true);
     }

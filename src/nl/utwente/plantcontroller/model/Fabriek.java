@@ -17,9 +17,7 @@ public class Fabriek {
 		    }
 		    
 		    productTypen = new ArrayList<Product>();
-		    List<Gebruikersrol> gebruikersrollijst = new ArrayList<Gebruikersrol>();
-		    gebruikersrollijst.add(new KlantenRol("Root", "Het system"));
-		    gebruikers.add(new Gebruiker("admin", "admin", gebruikersrollijst));
+		    gebruikers.add(new Gebruiker("admin", "admin", new KlantenRol("Admin", "Adminstraat 26")));
 		    productTypen.add(new Product(null,0,"product 1"));
 		    productTypen.add(new Product(null,0,"product 2"));
 		    productTypen.add(new Product(null,0,"product 3"));
@@ -33,8 +31,14 @@ public class Fabriek {
 		    productTypen.add(p);
 		}
 		
-		public void voegGebruikerToe(String inlognaam, String wachtwoord, Gebruikersrol... rollen){
-		    gebruikers.add(new Gebruiker(inlognaam, wachtwoord, Arrays.asList(rollen)));
+		public boolean voegGebruikerToe(String inlognaam, String wachtwoord, GebruikersRol rol){
+		    for(Gebruiker g: gebruikers){
+		        if(g.getInlogNaam().equalsIgnoreCase(inlognaam)){
+		            return false;
+		        }
+		    }
+		    gebruikers.add(new Gebruiker(inlognaam, wachtwoord, rol));
+		    return true;
 		}
 		
 		public Gebruiker checkGebruiker(String login, String password){
