@@ -39,7 +39,7 @@ public class BestelPaneel extends JPanel implements ActionListener {
     private JTextField amountField = new JTextField();
     private JTable table;
     private JButton bestelKnop = new JButton("Bestel");
-    DefaultTableModel model = new DefaultTableModel();
+    private DefaultTableModel model = new DefaultTableModel();
 
     public BestelPaneel(Gebruiker g, Fabriek f) {
         this.g = g;

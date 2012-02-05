@@ -9,7 +9,7 @@ public class Fabriek {
 		private List<Bestelling> bestellingen = new ArrayList<Bestelling>();
 		private Assemblagelijn[] lijnen;
 		private List<Product> productTypen;
-		
+		private List<Onderdeel> onderdeelTypen;
 		public Fabriek(){
 		    lijnen = new Assemblagelijn[10];
 		    for(int i = 0; i < 10; i++){
@@ -18,9 +18,17 @@ public class Fabriek {
 		    
 		    productTypen = new ArrayList<Product>();
 		    gebruikers.add(new Gebruiker("admin", "admin", new KlantenRol("Admin", "Adminstraat 26")));
-		    productTypen.add(new Product(null,100,"product 1"));
-		    productTypen.add(new Product(null,100,"product 2"));
-		    productTypen.add(new Product(null,100,"product 3"));
+		    productTypen.add(new Product(null,100, 10.0, 4, "product 1"));
+		    productTypen.add(new Product(null,100, 17.0, 6, "product 2"));
+		    productTypen.add(new Product(null,100, 40.0, 7, "product 3"));
+		    
+		    onderdeelTypen = new ArrayList<Onderdeel>();
+		    onderdeelTypen.add(new Onderdeel(4.7, 29, "Onderdeel 1"));
+		    onderdeelTypen.add(new Onderdeel(3.5, 17, "Onderdeel 2"));
+		    onderdeelTypen.add(new Onderdeel(1.0, 35, "Onderdeel 3"));
+		    onderdeelTypen.add(new Onderdeel(2.7, 96, "Onderdeel 4"));
+		    onderdeelTypen.add(new Onderdeel(3.1, 10, "Onderdeel 5"));
+		    
 		}
 		
 		public void bestel(Bestelling b) {
@@ -57,7 +65,7 @@ public class Fabriek {
 		
 		public Product getProductBijNaam(String name){
             for(Product prod : productTypen){
-                if(prod.getNaam().equals(name)){
+                if(prod.toString().equals(name)){
                     return prod;
                 }
             }
@@ -72,5 +80,9 @@ public class Fabriek {
         
         public Assemblagelijn[] getAssemblagelijnen(){
             return lijnen;
+        }
+        
+        public List<Onderdeel> getOnderdelen(){
+            return onderdeelTypen;
         }
 }

@@ -39,6 +39,7 @@ public class DetailFrame extends JFrame{
         idField.setText("" + b.getId());
         model.addColumn("product");
         model.addColumn("Hoeveelheid");
+        model.addColumn("Hoeveelheid niet vooradig");
         model.addColumn("stukprijs");
         model.addColumn("totaalprijs");
         tableForOrders  = new JTable(model);
@@ -74,7 +75,7 @@ public class DetailFrame extends JFrame{
         this.add(pan, BorderLayout.NORTH);
         
         for(BestelItem bi : b.getBestelItems()){
-            model.addRow(new Object[]{bi.getProduct(), bi.getAantal(), bi.getProduct().getPrijs(), bi.getPrijs()});
+            model.addRow(new Object[]{bi.getProduct(), bi.getAantal(), bi.getHoeveelheidTeWeinig(), bi.getProduct().getPrijs(), bi.getPrijs()});
         }
         
         this.add(new JScrollPane(tableForOrders, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER ), BorderLayout.CENTER);
