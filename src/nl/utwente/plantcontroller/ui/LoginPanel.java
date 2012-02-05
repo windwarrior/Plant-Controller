@@ -12,6 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import nl.utwente.plantcontroller.model.Fabriek;
+import nl.utwente.plantcontroller.model.Gebruiker;
+
 public class LoginPanel extends JPanel implements ActionListener{
     private static final long serialVersionUID = 407324739824395920L;
     
@@ -21,8 +24,14 @@ public class LoginPanel extends JPanel implements ActionListener{
     private JLabel passwrdLabel = new JLabel("Wachtwoord:");
     private JButton login = new JButton("login");
     private JLabel errorLabel = new JLabel("Ik ben een error");
+
+    private MainFrame parent;
+
+    private Fabriek fabriek;
     
-    public LoginPanel(){
+    public LoginPanel(MainFrame parent, Fabriek fabriek){
+        this.parent = parent;
+        this.fabriek = fabriek;
         init();
     }
     
@@ -75,9 +84,18 @@ public class LoginPanel extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent arg0) {
         if(arg0.getSource().equals(login)){
-            if(name.getText() != ""){
-                errorLabel.setText("woei, jrebel");
-               
+            if(name.getText() != "" &&  passwrd.getPassword() != null){
+                
+               String s = new StringBuilder().append(passwrd.getPassword()).toString(); //haha, dit is ontzettend lelijk, maarja 
+               Gebruiker g;
+               System.out.println(s);
+               if((g = fabriek.checkGebruiker(name.getText(), s)) != null){
+                   errorLabel.setText("Yay!");
+                   parent.setPanel(new MainPanel(fabriek, g));
+               }else{
+                   errorLabel.setText("login/password is incorrect");
+                   passwrd.setText("");
+               }
             }
         }
     }

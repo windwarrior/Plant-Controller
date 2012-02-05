@@ -1,26 +1,30 @@
 package nl.utwente.plantcontroller.ui;
 
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+
+import nl.utwente.plantcontroller.model.Fabriek;
 
 public class MainFrame extends JFrame{
-    private LoginPanel loginPanel = new LoginPanel();
+    private static final long serialVersionUID = -7795793302779137037L;
+    private LoginPanel loginPanel;
+    private Fabriek fabriek;
 
-    public MainFrame(){
+    public MainFrame(Fabriek fabriek){
+        this.fabriek = fabriek;
+        loginPanel = new LoginPanel(this, fabriek);
         init();
     }
 
     private void init() {
         this.setSize(400,200);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.add(loginPanel);
-        this.pack();
+        this.getContentPane().add(loginPanel);
         this.setVisible(true);
     }
     
-    public static void main(String[] args){
-        new MainFrame();
+    public void setPanel(JComponent c){
+        this.getContentPane().removeAll();
+        this.getContentPane().add(c);
     }
 }

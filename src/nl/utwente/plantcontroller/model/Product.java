@@ -12,10 +12,12 @@ public class Product extends Onderdeel {
 		private Map<Onderdeel, Integer> samenstelling;
 		private long productieduur;
 		private List<Integer> serienummers = new ArrayList<Integer>();
+        private String naam;
 		
-		public Product(Map<Onderdeel, Integer> samenstelling, long productieduur){
+		public Product(Map<Onderdeel, Integer> samenstelling, long productieduur, String naam){
 		    this.samenstelling = samenstelling;
 		    this.productieduur = productieduur;
+		    this.naam = naam;
 		}
 		
 		public List<Integer> bestelProduct(int aantal){
@@ -46,4 +48,12 @@ public class Product extends Onderdeel {
 		public Map<Onderdeel, Integer> getSamenstelling(){
 		    return samenstelling;
 		}
+
+        public String getNaam() {
+            return naam;
+        }
+        
+        public String toString(){
+            return this.getNaam();
+        }
 }

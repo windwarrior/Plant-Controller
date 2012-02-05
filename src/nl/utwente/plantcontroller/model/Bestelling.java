@@ -1,5 +1,6 @@
 package nl.utwente.plantcontroller.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import nl.utwente.plantcontroller.util.SerialProvider;
@@ -8,7 +9,7 @@ public class Bestelling {
 
 	private KlantenRol geplaatstDoor;
 
-	private List<BestelItem> bestelItems;
+	private List<BestelItem> bestelItems = new ArrayList<BestelItem>();
 
 	private int id;
 
@@ -44,6 +45,14 @@ public class Bestelling {
 	
 	public int getId(){
 	    return id;
+	}
+	
+	public String toString(){
+	    String result = "";
+	    for(BestelItem b : bestelItems){
+	        result += b.toString() + " ";
+	    }
+	    return result;
 	}
 	
 }
