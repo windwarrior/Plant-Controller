@@ -56,6 +56,7 @@ public class BestelPaneel extends JPanel implements ActionListener{
         bestelKnop.addActionListener(this);     
         JScrollPane pane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         productComboBox.addItem("geen");
+        if(f == null) System.out.println("f is null");
         for(Product p : f.getProductTypen()){
             productComboBox.addItem(p.toString());
         }
@@ -119,6 +120,9 @@ public class BestelPaneel extends JPanel implements ActionListener{
                         best.addProduct(new BestelItem(f.getProductBijNaam(bestset.getKey()), bestset.getValue()));
                     }
                     System.out.println(best);
+                    //TODO: NIET NET
+                    f.bestel(best);
+                    kr.plaatsBestelling(best);
                 }   
             }
             

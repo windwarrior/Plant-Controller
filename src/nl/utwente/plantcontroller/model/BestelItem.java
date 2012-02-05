@@ -21,4 +21,8 @@ public class BestelItem {
     public double getPrijs() {
         return product.getPrijs() * aantal;
     }
+    
+    public String toString(){
+        return product.toString() + " "  + aantal;
+    }
 }
