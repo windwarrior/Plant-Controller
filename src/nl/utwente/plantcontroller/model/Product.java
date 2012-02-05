@@ -41,6 +41,7 @@ public class Product extends Onderdeel {
 		    return vooraadUitTeleveren;
 		}
 		
+		
 		public synchronized void updateVooraad(int amount){
 		    for(int i = 0; i < amount; i++){
 		        serienummers.add(SerialProvider.getNextSerial());
@@ -48,17 +49,21 @@ public class Product extends Onderdeel {
 		    
 		    for(BestelItem best : nogTeVoldoen){
 		        if(best.getHoeveelheidTeWeinig() > 0){
-		            int hoeveelheid = best.getHoeveelheidTeWeinig() >= amount ? amount : best.getHoeveelheidTeWeinig();
-		            for(int i = 0; i < hoeveelheid; i++){
+		            
+		            for(int i = 0; i < best.getHoeveelheidTeWeinig() && i < amount; i++){
 		                best.addNewBestelItem(serienummers.get(i));
 		                serienummers.remove(i);
 		            }
 		            
-		            amount -= hoeveelheid;
-		            
-		            if(amount == 0) return;
 		        }
 		    }
+		    
+		    vooraad += amount;
+		}
+		
+		@Override
+		public void setVooraad(int vooraad){
+		    updateVooraad(vooraad);
 		}
 		
 		public synchronized int getVooraad(){

@@ -4,7 +4,7 @@ public class Onderdeel {
 	private int besteld;
 	private int gereserveerd;
 	private double prijs;
-	private int vooraad;
+	protected int vooraad;
     private String naam;
 	
 	public Onderdeel(double prijs, int vooraad, String naam){
@@ -24,5 +24,12 @@ public class Onderdeel {
     public String toString(){
         return naam;
     }
+
+    
+    public void setVooraad(int vooraad){
+        if(vooraad < 0) return;
+        this.vooraad = vooraad;
+    }
+    
     
 }
