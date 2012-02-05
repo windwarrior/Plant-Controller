@@ -18,9 +18,9 @@ public class Fabriek {
 		    
 		    productTypen = new ArrayList<Product>();
 		    gebruikers.add(new Gebruiker("admin", "admin", new KlantenRol("Admin", "Adminstraat 26")));
-		    productTypen.add(new Product(null,0,"product 1"));
-		    productTypen.add(new Product(null,0,"product 2"));
-		    productTypen.add(new Product(null,0,"product 3"));
+		    productTypen.add(new Product(null,100,"product 1"));
+		    productTypen.add(new Product(null,100,"product 2"));
+		    productTypen.add(new Product(null,100,"product 3"));
 		}
 		
 		public void bestel(Bestelling b) {
@@ -68,5 +68,9 @@ public class Fabriek {
         public List<Bestelling> getBestellingen() {
             // TODO Auto-generated method stub
             return bestellingen;
+        }
+        
+        public Assemblagelijn[] getAssemblagelijnen(){
+            return lijnen;
         }
 }

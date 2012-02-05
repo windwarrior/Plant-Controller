@@ -8,7 +8,7 @@ public class PasswordGenerator {
     public static String generatePass(){
         SecureRandom rand = new SecureRandom();
         String pass = "";
-        int lenght = Math.abs(rand.nextInt()) % 10 + 6; //minimaal 6 maximaal 16 chars genereren :)
+        int lenght = Math.abs(rand.nextInt()) % 10 + 6; //minimaal 6 maximaal 15 chars genereren :)
         for(int i = 0; i< lenght; i++){
             pass += allowedChars.charAt(Math.abs(rand.nextInt()) % allowedChars.length());
         }

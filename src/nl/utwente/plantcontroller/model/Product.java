@@ -31,13 +31,13 @@ public class Product extends Onderdeel {
 		    return vooraadUitTeleveren;
 		}
 		
-		public void updateVooraad(int amount){
+		public synchronized void updateVooraad(int amount){
 		    for(int i = 0; i < amount; i++){
 		        serienummers.add(SerialProvider.getNextSerial());
 		    }
 		}
 		
-		public int getVooraad(){
+		public synchronized int getVooraad(){
 		    return serienummers.size();
 		}
 		

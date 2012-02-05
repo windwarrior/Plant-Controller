@@ -18,4 +18,13 @@ public class Productrun {
 	    }
 	    return true;
 	}
+	
+	public Product getProductSoort(){
+	    return productsoort;
+	}
+
+    public int getHoeveelheid() {
+        // TODO Auto-generated method stub
+        return hoeveelheid;
+    }
 }
