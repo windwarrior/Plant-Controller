@@ -26,13 +26,26 @@ public class Fabriek {
 		    
 		    productTypen = new ArrayList<Product>();
 		    gebruikers.add(new Gebruiker("admin", "admin", new RootRol()));
+		    gebruikers.add(new Gebruiker("klant", "klant", new KlantenRol("KlantNaam", "KlantAdres")));
+		    gebruikers.add(new Gebruiker("magazijn", "magazijn", new Magazijnrol()));
+		    gebruikers.add(new Gebruiker("operator", "operator", new Operatorrol()));
+		    gebruikers.add(new Gebruiker("verkoop", "verkoop", new Verkopersrol()));
 		    Map<Onderdeel, Integer> onderdeelMap = new HashMap<Onderdeel, Integer>();
 		    onderdeelMap.put(onderdeelTypen.get(0), 4);
 		    onderdeelMap.put(onderdeelTypen.get(2), 2);
 		    onderdeelMap.put(onderdeelTypen.get(4), 1);
-		    productTypen.add(new Product(onderdeelMap,100, 10.0, 4, "product 1"));
-		    productTypen.add(new Product(null,100, 17.0, 6, "product 2"));
-		    productTypen.add(new Product(null,100, 40.0, 7, "product 3"));
+		    productTypen.add(new Product(onderdeelMap,1000, 10.0, 4, "product 1"));
+		    
+		    Map<Onderdeel, Integer> onderdeelMap2 = new HashMap<Onderdeel, Integer>();
+		    onderdeelMap2.put(onderdeelTypen.get(1), 3);
+            onderdeelMap2.put(onderdeelTypen.get(2), 5);
+            onderdeelMap2.put(onderdeelTypen.get(4), 2);
+		    productTypen.add(new Product(onderdeelMap2,100, 17.0, 6, "product 2"));
+		    
+		    Map<Onderdeel, Integer> onderdeelMap3 = new HashMap<Onderdeel, Integer>();
+            onderdeelMap3.put(onderdeelTypen.get(2), 3);
+            onderdeelMap3.put(onderdeelTypen.get(3), 5);
+		    productTypen.add(new Product(onderdeelMap3,100, 40.0, 7, "product 3"));
 		    
 		    
 		    
@@ -84,7 +97,6 @@ public class Fabriek {
 		            return gebruiker;
 		        }
 		    }
-		    System.out.println("bah");
 		    return null;
 		}
 		

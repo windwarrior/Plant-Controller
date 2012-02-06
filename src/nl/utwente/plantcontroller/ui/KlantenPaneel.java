@@ -55,7 +55,6 @@ public class KlantenPaneel extends JPanel implements ActionListener{
         
         int row = tab.getSelectedRow();
         if(row != -1){
-            System.out.println("nothing!");
             KlantenRol k = (KlantenRol) model.getValueAt(row, 0);
             JFrame frame = new JFrame();
             frame.add(new KlantBestellingenPaneel(k));

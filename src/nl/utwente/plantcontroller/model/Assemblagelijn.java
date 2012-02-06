@@ -11,7 +11,6 @@ public class Assemblagelijn {
      * @param r
      */
     public void startRun(Productrun r) {
-        System.out.println("oi");
         isBusy = true;
         r.claimVooraden(10);
         product = r.getProductSoort();
@@ -81,8 +80,7 @@ public class Assemblagelijn {
 
                     Thread.sleep(millis);
                 } catch (InterruptedException e) {}
-                System.out.println("updating vooraad");
-                p.updateVooraad(1);
+                p.voegVooraadToe(1);
                 a.verminderHoeveelheid();
             }
             a.setBusy(false);

@@ -11,7 +11,10 @@ public class BestelItem {
 	public BestelItem(Product product, int aantal){
 	    this.product = product;
 	    this.aantal = aantal;
-	    product.bestelProduct(this);
+	    List<Integer> productjes = product.bestelProduct(this);
+	    for(Integer serial : productjes){
+	        addNewBestelItem(serial);
+	    }
 	}
 	
 	/**

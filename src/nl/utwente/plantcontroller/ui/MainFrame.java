@@ -29,5 +29,6 @@ public class MainFrame extends JFrame{
     public void setPanel(JComponent c){
         this.getContentPane().removeAll();
         this.getContentPane().add(c);
+        this.validate();
     }
 }

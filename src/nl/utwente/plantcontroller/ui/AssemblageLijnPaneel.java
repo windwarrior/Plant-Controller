@@ -60,7 +60,7 @@ public class AssemblageLijnPaneel extends JPanel implements ActionListener{
     private JButton start = new JButton("Start run");
     
     //Een label voor eventuele statusmeldingen
-    private JLabel errorLabel = new JLabel("ik ben ook al een error");
+    private JLabel errorLabel = new JLabel("");
     public AssemblageLijnPaneel(Fabriek fabriek){
         this.fabriek = fabriek;
         init();
@@ -183,6 +183,7 @@ public class AssemblageLijnPaneel extends JPanel implements ActionListener{
             System.out.println("voldoende vooraad");
             Assemblagelijn a = fabriek.getAssemblagelijnen()[assemblagelijn];
             if(!a.isBusy()){
+                System.out.println("starting run");
                 a.startRun(pr);
             }else{
                 errorLabel.setText("De assemblagelijn is bezet");
@@ -198,7 +199,6 @@ public class AssemblageLijnPaneel extends JPanel implements ActionListener{
                     null,
                     options,
                     options[2]);
-            System.out.println(n);
             
             if(n == 2){
                 options = new Object[]{"Ja", "Nee"};

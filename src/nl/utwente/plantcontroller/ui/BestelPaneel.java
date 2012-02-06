@@ -79,8 +79,6 @@ public class BestelPaneel extends JPanel implements ActionListener {
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         productComboBox.addItem("geen");
-        if (f == null)
-            System.out.println("f is null");
         for (Product p : f.getProductTypen()) {
             productComboBox.addItem(p.toString());
         }
@@ -141,7 +139,6 @@ public class BestelPaneel extends JPanel implements ActionListener {
                     best.addProduct(new BestelItem(f.getProductBijNaam(bestset
                             .getKey()), bestset.getValue()));
                 }
-                System.out.println(best);
                 // TODO: NIET NET
                 f.bestel(best);
                 kr.plaatsBestelling(best);
@@ -150,7 +147,6 @@ public class BestelPaneel extends JPanel implements ActionListener {
 
         } else if (e.getSource() == voegToeKnop) {
             if (!productComboBox.getSelectedItem().equals("geen")) {
-                System.out.println("yay");
                 int hoeveelheid;
                 try{
                     hoeveelheid = Integer.parseInt(amountField.getText());
@@ -197,7 +193,6 @@ public class BestelPaneel extends JPanel implements ActionListener {
                     .elementAt(0);
             int value = (Integer) ((Vector<?>) model.getDataVector().elementAt(i))
                     .elementAt(1);
-            System.out.println(key + " " + value);
             map.put(key, value);
         }
         

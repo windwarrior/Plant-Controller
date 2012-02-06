@@ -120,5 +120,7 @@ public class VooraadPaneel extends JPanel implements ActionListener{
         Onderdeel prod = (Onderdeel) productenBox.getSelectedItem();
         
         prod.setVooraad(hoeveelheid);
+        
+        this.updatePanel();
     }
 }

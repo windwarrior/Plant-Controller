@@ -147,7 +147,6 @@ public class VoegGebruikerToePaneel extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == voegToeKnop){
             if(!inlogNaamField.getText().equals("") && !naamField.getText().equals("") && !adresField.getText().equals("") && !rollenBox.getSelectedItem().equals("Geen")){
-                System.out.println("hai");
                 String loginNaam = inlogNaamField.getText();
                 String password = PasswordGenerator.generatePass();
                 GebruikersRol r = getRol((String)rollenBox.getSelectedItem(), naamField.getText(), adresField.getText());

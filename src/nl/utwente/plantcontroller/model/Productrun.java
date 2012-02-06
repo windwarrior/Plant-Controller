@@ -46,11 +46,13 @@ public class Productrun {
      * @precondition voldoendeVooraad(n)
      * @param n
      */
-    public void claimVooraden(int n) {
+    public boolean claimVooraden(int n) {
+        if(!voldoendeVoorraad(n)) return false;
         for(Entry<Onderdeel, Integer> onderdeel : productsoort.getSamenstelling().entrySet()){
             Onderdeel o = onderdeel.getKey();
             int hoeveelheid = onderdeel.getValue() * n;
-            o.setVooraad(o.getVooraad() - hoeveelheid);
+            o.verwijderVooraad(o.getVooraad() - hoeveelheid);
         }
+        return true;
     }
 }
