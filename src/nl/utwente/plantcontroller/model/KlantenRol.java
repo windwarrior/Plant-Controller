@@ -18,24 +18,39 @@ public class KlantenRol extends GebruikersRol {
         this.rechten = new KlantRechten();
     }
 	
-	public void plaatsBestelling(Bestelling b) {};
+    /**
+     * Plaats een bestelling b bij deze KlantRol
+     * @param b
+     */
+	public void plaatsBestelling(Bestelling b) {
+	    bestellingen.add(b);	    
+	};
+	
+	/**
+	 * Verkrijg alle bestellingen die deze klant geplaatst heeft
+	 * @return
+	 */
 	public List<Bestelling> getBestellingen() {
-	    
 	    return bestellingen;
 	};
 	
-	
+	/**
+	 * Verkrijg een string representatie van deze klant
+	 */
 	public String toString(){
 	    return naam;
 	}
-
+	
+	/**
+	 * Verkrijg het adres van deze persoon
+	 * @return
+	 */
     public String getAdres() {
         return adres;
     }
 
     @Override
     public AccountRechten getAccountRechten() {
-        // TODO Auto-generated method stub
         return rechten;
     }
 

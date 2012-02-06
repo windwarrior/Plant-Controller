@@ -30,15 +30,36 @@ import nl.utwente.plantcontroller.model.KlantenRol;
 import nl.utwente.plantcontroller.model.Product;
 
 public class BestelPaneel extends JPanel implements ActionListener {
+    private static final long serialVersionUID = -3923119979431172823L;
+    
+    //De gebruiker die de bestelling gaat plaatsen
     private Gebruiker g;
+    
+    //De fabriek, het startpunt in het systeem
     private Fabriek f;
+    
+    //Het label, om aan te geven dat de combobox ernaast producten bevat
     private JLabel productLabel = new JLabel("Product Typen:");
+    
+    //De combobox met producten
     private JComboBox productComboBox = new JComboBox();
+    
+    //Een knop om een product toe te voegen aan een bestellling
     private JButton voegToeKnop = new JButton("Voeg Toe");
+    
+    //Een label om aan te geven dat in het textfield een hoeveelheid hoort
     private JLabel amountLabel = new JLabel("Aantal");
+    
+    //Een textfield voor de hoeveelheid te bestellen producten
     private JTextField amountField = new JTextField();
+    
+    //De table waarin de bestellingen getoont gaan worden
     private JTable table;
+    
+    //De knop waarmee de bestelling bestelt kan worden
     private JButton bestelKnop = new JButton("Bestel");
+    
+    //Het tablemodel dat gebruikt wordt als data voor de tabel
     private DefaultTableModel model = new DefaultTableModel();
 
     public BestelPaneel(Gebruiker g, Fabriek f) {
@@ -139,7 +160,7 @@ public class BestelPaneel extends JPanel implements ActionListener {
                 int row;
                 if ((row = getStackableRowIndex(productComboBox
                         .getSelectedItem())) != -1) {
-                    int value = (Integer) ((Vector) model.getDataVector()
+                    int value = (Integer) ((Vector<?>) model.getDataVector()
                             .elementAt(row)).elementAt(1) + hoeveelheid;
                     model.removeRow(row);
                     model.insertRow(row,
@@ -161,7 +182,7 @@ public class BestelPaneel extends JPanel implements ActionListener {
 
     public int getStackableRowIndex(Object choice) {
         for (int i = 0; i < model.getRowCount(); i++) {
-            if (((Vector) model.getDataVector().elementAt(i)).elementAt(0)
+            if (((Vector<?>) model.getDataVector().elementAt(i)).elementAt(0)
                     .equals(choice)) {
                 return i;
             }
@@ -172,9 +193,9 @@ public class BestelPaneel extends JPanel implements ActionListener {
     public Map<String, Integer> getBestelling() {
         Map<String, Integer> map = new HashMap<String, Integer>();
         for (int i = 0; i < model.getRowCount(); i++) {
-            String key = (String) ((Vector) model.getDataVector().elementAt(i))
+            String key = (String) ((Vector<?>) model.getDataVector().elementAt(i))
                     .elementAt(0);
-            int value = (Integer) ((Vector) model.getDataVector().elementAt(i))
+            int value = (Integer) ((Vector<?>) model.getDataVector().elementAt(i))
                     .elementAt(1);
             System.out.println(key + " " + value);
             map.put(key, value);

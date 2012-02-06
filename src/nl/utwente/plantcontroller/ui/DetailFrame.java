@@ -17,6 +17,7 @@ import nl.utwente.plantcontroller.model.BestelItem;
 import nl.utwente.plantcontroller.model.Bestelling;
 
 public class DetailFrame extends JFrame{
+    private static final long serialVersionUID = -8080019934735683489L;
     private Bestelling b;
     private JPanel pan = new JPanel();
     private JLabel klantLabel = new JLabel("Klant: ");

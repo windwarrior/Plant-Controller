@@ -5,7 +5,11 @@ public class Assemblagelijn {
     private Product product;
     private int hoeveelheid;
 
-
+    /**
+     * Start een productie run
+     * @precondition r.voldoendeVoorraad() == true
+     * @param r
+     */
     public void startRun(Productrun r) {
         System.out.println("oi");
         isBusy = true;
@@ -15,11 +19,20 @@ public class Assemblagelijn {
         Thread t = new Thread(new Delayer((long)r.getProductSoort().getProductieDuur(), r.getHoeveelheid(), r.getProductSoort(), this));
         t.start();
     }
-
+    
+    /**
+     * Returns true als de Assemblagelijn bezig is met het maken van producten
+     * @return
+     */
     public boolean isBusy(){
         return isBusy;
     }
-
+    
+    /**
+     * Zet de staat van deze Assemblagelijn op isBusy
+     * @postcondition this.isBusy = isBusy;
+     * @param isBusy
+     */
     public void setBusy(boolean isBusy){
         if(!isBusy){
             product = null;
@@ -27,16 +40,28 @@ public class Assemblagelijn {
         }
         this.isBusy = isBusy;
     }
-
+    
+    /**
+     * Geeft het product wat deze assemblageLijn aan het maken is
+     * als deze productielijn niet bezig is, dan wordt er null gereturnt
+     * @return
+     */
     public Product getProduct(){
         return product;
     }
     
+    /**
+     * Vermindert de hoeveelheid die deze Assemeblagelijn nog moet produceren
+     */
     public synchronized void verminderHoeveelheid(){
         this.hoeveelheid--;
     }
     
-
+    /**
+     * Inner klasse die het productie proces simuleert.
+     * @author lennart
+     *
+     */
     private class Delayer implements Runnable{
         private long millis;
         private int hoeveelheid;
@@ -64,9 +89,12 @@ public class Assemblagelijn {
         }
 
     }
-
+    
+    /**
+     * Geeft de hoeveelheid producten die nog geproduceert moet worden
+     * @return
+     */
     public synchronized int getHoeveelheid() {
-        // TODO Auto-generated method stub
         return hoeveelheid;
     }
 }

@@ -1,8 +1,13 @@
 package nl.utwente.plantcontroller.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -14,11 +19,13 @@ import nl.utwente.plantcontroller.model.KlantenRol;
 import nl.utwente.plantcontroller.model.Onderdeel;
 import nl.utwente.plantcontroller.model.Product;
 
-public class PersonenPaneel extends JPanel{
+public class PersonenPaneel extends JPanel implements ActionListener{
+    private static final long serialVersionUID = 7441857059944398080L;
     private Fabriek fabriek;
     private DefaultTableModel model;
     private Object[] columnIdentifiers = {"Klantnaam", "Adres"};
-    private JTable tab = new JTable(model);           
+    private JTable tab = new JTable(model);     
+    private JButton but = new JButton("Bekijk details");
     public PersonenPaneel(Fabriek fabriek){
         this.fabriek = fabriek;
         init();
@@ -26,8 +33,10 @@ public class PersonenPaneel extends JPanel{
 
     private void init() {
         this.setLayout(new BorderLayout());
+        but.addActionListener(this);
         updatePanel();
         this.add(new JScrollPane(tab, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), BorderLayout.CENTER);
+        this.add(but, BorderLayout.SOUTH);
     }
     
     public void updatePanel(){
@@ -42,5 +51,19 @@ public class PersonenPaneel extends JPanel{
         
         tab.setModel(model);
        
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent arg0) {
+        
+        int row = tab.getSelectedRow();
+        if(row != -1){
+            System.out.println("nothing!");
+            KlantenRol k = (KlantenRol) model.getValueAt(row, 0);
+            JFrame frame = new JFrame();
+            frame.add(new KlantBestellingenPaneel(k));
+            frame.setSize(new Dimension(600,400));
+            frame.setVisible(true);
+        }
     }
 }

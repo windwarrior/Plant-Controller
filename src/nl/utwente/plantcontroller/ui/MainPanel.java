@@ -54,6 +54,9 @@ public class MainPanel extends JTabbedPane implements ChangeListener{
         ap.updatePanel();
         vp.updatePanel();
         pp.updatePanel();
+        if(g.getRol() instanceof KlantenRol){
+            kbp.updatePanel();
+        }
         System.out.println("Updating");
         
     }

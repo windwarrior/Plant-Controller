@@ -3,16 +3,6 @@ package nl.utwente.plantcontroller.auth;
 public class GebruikerRechten implements AccountRechten {
 
     @Override
-    public boolean canLogin() {
-        return true;
-    }
-
-    @Override
-    public boolean canLogout() {
-        return true;
-    }
-
-    @Override
     public boolean canPlaceOrder() {
         return false;
     }

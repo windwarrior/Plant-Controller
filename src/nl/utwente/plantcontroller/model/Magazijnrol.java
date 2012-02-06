@@ -10,7 +10,6 @@ public class Magazijnrol extends GebruikersRol {
     }
     @Override
     public AccountRechten getAccountRechten() {
-        // TODO Auto-generated method stub
         return rechten;
     }
 }

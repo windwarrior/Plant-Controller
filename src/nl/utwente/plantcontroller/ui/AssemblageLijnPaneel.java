@@ -24,20 +24,45 @@ import nl.utwente.plantcontroller.model.Product;
 import nl.utwente.plantcontroller.model.Productrun;
 
 public class AssemblageLijnPaneel extends JPanel implements ActionListener{
+    private static final long serialVersionUID = -4226636267793117440L;
+    
+    //Tabel waarin de Assemblagelijnen opgeslagen gaan worden
     private JTable tab;
+    
+    //Model waarmee straks de tabel gevult wordt
     private DefaultTableModel model;
-    private Fabriek fa;
+    
+    //De fabriek, het "ingangpunt" in het echte systeem
+    private Fabriek fabriek;
+    
+    //De titels van de kolommen van de tabel
     private String[] columnIdentifiers = {"ID","bezet","product","hoeveelheid"};
+    
+    //De label voor het selectievakje waarmee een assemblageLijn wordt toegewezen
     private JLabel assemblagelijnlabel = new JLabel("Assemblagelijn: ");
+    
+    //De combobox waarmee een assemblagelijn geselecteerd kan worden
     private JComboBox assemblagelijnbox = new JComboBox();
+    
+    //De label voor naast het product vakje
     private JLabel productlabel = new JLabel("Product: ");
+    
+    //Het productvakje waarmee een product geselecteerd kan worden voor productie
     private JComboBox productBox = new JComboBox();
+    
+    //Een label om aan te geven dat er een hoeveelheid in het naastgelegen vakje hoort
     private JLabel hoeveelheidLabel = new JLabel("Hoeveelheid: ");
+    
+    //Het vakje waar een hoeveelheid aangegeven kan worden
     private JTextField hoeveelheidTextBox = new JTextField();
+    
+    //De knop waarmee een productrun gestart kan worden
     private JButton start = new JButton("Start run");
+    
+    //Een label voor eventuele statusmeldingen
     private JLabel errorLabel = new JLabel("ik ben ook al een error");
-    public AssemblageLijnPaneel(Fabriek fa){
-        this.fa = fa;
+    public AssemblageLijnPaneel(Fabriek fabriek){
+        this.fabriek = fabriek;
         init();
                 
     }
@@ -54,10 +79,10 @@ public class AssemblageLijnPaneel extends JPanel implements ActionListener{
         this.setLayout(new BorderLayout());
         this.add(new JScrollPane(tab, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), BorderLayout.CENTER);
         
-        for(int i = 0; i< fa.getAssemblagelijnen().length; i++){
+        for(int i = 0; i< fabriek.getAssemblagelijnen().length; i++){
             assemblagelijnbox.addItem(i);
         }
-        for (Product p : fa.getProductTypen()) {
+        for (Product p : fabriek.getProductTypen()) {
             productBox.addItem(p);
         }
         JPanel panel = new JPanel();
@@ -136,13 +161,13 @@ public class AssemblageLijnPaneel extends JPanel implements ActionListener{
     }
     
     public void updatePanel(){
-        int lenght = fa.getAssemblagelijnen().length;
+        int lenght = fabriek.getAssemblagelijnen().length;
         Object[][] o = new Object[lenght][4];
         for(int i = 0; i<lenght; i++){
             o[i][0] = i;
-            o[i][1] = fa.getAssemblagelijnen()[i].isBusy();
-            o[i][2] = fa.getAssemblagelijnen()[i].getProduct();
-            o[i][3] = fa.getAssemblagelijnen()[i].getHoeveelheid();
+            o[i][1] = fabriek.getAssemblagelijnen()[i].isBusy();
+            o[i][2] = fabriek.getAssemblagelijnen()[i].getProduct();
+            o[i][3] = fabriek.getAssemblagelijnen()[i].getHoeveelheid();
         }
         model.setDataVector(o, columnIdentifiers);
        
@@ -156,7 +181,7 @@ public class AssemblageLijnPaneel extends JPanel implements ActionListener{
         Productrun pr = new Productrun(p, hoeveelheid);
         if(pr.voldoendeVoorraad(hoeveelheid)){
             System.out.println("voldoende vooraad");
-            Assemblagelijn a = fa.getAssemblagelijnen()[assemblagelijn];
+            Assemblagelijn a = fabriek.getAssemblagelijnen()[assemblagelijn];
             if(!a.isBusy()){
                 a.startRun(pr);
             }else{

@@ -12,6 +12,12 @@ public class Productrun {
 	    this.hoeveelheid = hoeveelheid;
 	}
 	
+	/**
+	 * Bekijk of er voldoende vooraad van de onderdelen is om
+	 * een productrun te kunnen starten
+	 * @param n
+	 * @return
+	 */
 	public boolean voldoendeVoorraad(int n) {
 	    for(Entry<Onderdeel, Integer> onderdeel : productsoort.getSamenstelling().entrySet()){
 	        if(onderdeel.getKey().getVooraad() < onderdeel.getValue() * n) return false;
@@ -19,15 +25,27 @@ public class Productrun {
 	    return true;
 	}
 	
+	/**
+	 * Verkrijg het product dat deze Productrun gaat produceren
+	 * @return
+	 */
 	public Product getProductSoort(){
 	    return productsoort;
 	}
-
+	
+	/**
+	 * Verkrijg de hoeveelheid die deze productrun dient te produceren
+	 * @return
+	 */
     public int getHoeveelheid() {
-        // TODO Auto-generated method stub
         return hoeveelheid;
     }
-
+    
+    /**
+     * Claim een aantal onderdelen voor een bestelling
+     * @precondition voldoendeVooraad(n)
+     * @param n
+     */
     public void claimVooraden(int n) {
         for(Entry<Onderdeel, Integer> onderdeel : productsoort.getSamenstelling().entrySet()){
             Onderdeel o = onderdeel.getKey();

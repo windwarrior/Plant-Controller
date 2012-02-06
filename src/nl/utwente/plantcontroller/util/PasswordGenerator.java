@@ -1,10 +1,14 @@
 package nl.utwente.plantcontroller.util;
 
 import java.security.SecureRandom;
-import java.util.Random;
 
 public class PasswordGenerator {
     static final String allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    
+    /**
+     * Genereert een willekeurig wachtwoord
+     * @return
+     */
     public static String generatePass(){
         SecureRandom rand = new SecureRandom();
         String pass = "";

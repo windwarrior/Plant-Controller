@@ -1,7 +1,6 @@
 package nl.utwente.plantcontroller.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,14 +38,30 @@ public class Fabriek {
 		    
 		}
 		
+		/**
+		 * Plaats een bestelling bij deze fabriek
+		 * @param b
+		 */
 		public void bestel(Bestelling b) {
 		    bestellingen.add(b);
 		};
 		
+		/**
+		 * Voeg een nieuw product toe aan de catalogus van deze fabriek
+		 * @param p
+		 */
 		public void voegProductToe(Product p){
 		    productTypen.add(p);
 		}
 		
+		/**
+		 * Voeg een gebruiker toe aan deze fabriek, geeft true als het toevoegen
+		 * gelukt is
+		 * @param inlognaam
+		 * @param wachtwoord
+		 * @param rol
+		 * @return
+		 */
 		public boolean voegGebruikerToe(String inlognaam, String wachtwoord, GebruikersRol rol){
 		    for(Gebruiker g: gebruikers){
 		        if(g.getInlogNaam().equalsIgnoreCase(inlognaam)){
@@ -57,6 +72,12 @@ public class Fabriek {
 		    return true;
 		}
 		
+		/**
+		 * Check of een gebruiker bestaat in het systeem, en daarmee kan inloggen
+		 * @param login
+		 * @param password
+		 * @return
+		 */
 		public Gebruiker checkGebruiker(String login, String password){
 		    for(Gebruiker gebruiker : gebruikers){
 		        if(gebruiker.getInlogNaam().equalsIgnoreCase(login) && gebruiker.checkLogin(password)){
@@ -67,10 +88,21 @@ public class Fabriek {
 		    return null;
 		}
 		
+		/**
+		 * Verkrijg alle mogelijke productTypen die deze fabriek kan produceren
+		 * @return
+		 */
 		public List<Product> getProductTypen(){
 		    return productTypen;
 		}
 		
+		/**
+		 * Verkrijg een product op basis van zijn naam
+		 * Geeft een product waarvan de naam gelijk is aan name,
+		 * anders geeft het null
+		 * @param name
+		 * @return
+		 */
 		public Product getProductBijNaam(String name){
             for(Product prod : productTypen){
                 if(prod.toString().equals(name)){
@@ -80,20 +112,35 @@ public class Fabriek {
             return null;
 		    
 		}
-
+		
+		/**
+		 * Verkrijg alle geplaatste bestellingen bij deze fabriek
+		 * @return
+		 */
         public List<Bestelling> getBestellingen() {
-            // TODO Auto-generated method stub
             return bestellingen;
         }
         
+        /**
+         * Verkrijg alle assemblagelijnen die deze fabriek bevat
+         * @return
+         */
         public Assemblagelijn[] getAssemblagelijnen(){
             return lijnen;
         }
         
+        /**
+         * Verkrijg alle onderdelen die deze fabriek heeft
+         * @return
+         */
         public List<Onderdeel> getOnderdelen(){
             return onderdeelTypen;
         }
-
+        
+        /**
+         * Verkrijg alle gebruikers van deze fabrieks
+         * @return
+         */
         public List<Gebruiker> getGebruikers() {
             return gebruikers;
         }

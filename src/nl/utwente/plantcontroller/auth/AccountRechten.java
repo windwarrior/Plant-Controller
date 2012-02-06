@@ -1,19 +1,6 @@
 package nl.utwente.plantcontroller.auth;
 
 public interface AccountRechten {
-    /**
-     * true als een gebruiker kan inloggen
-     * 
-     * @return
-     */
-    public boolean canLogin();
-
-    /**
-     * true als een gebruiker kan uitloggen
-     * 
-     * @return
-     */
-    public boolean canLogout();
 
     /**
      * true als de gebruiker een bestelling kan plaatsen
