@@ -12,15 +12,25 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import nl.utwente.plantcontroller.model.BestelItem;
 import nl.utwente.plantcontroller.model.Bestelling;
 import nl.utwente.plantcontroller.model.KlantenRol;
 
 public class KlantBestellingenPaneel extends JPanel implements ActionListener{
+    private static final long serialVersionUID = -4168820199603683475L;
+    
+    //Het model waarin de bestellingen van een klant geplaatst worden
     private DefaultTableModel model;
+    
+    //De table waarin de bestellingen getoont worden
     private JTable table;
+    
+    //De knop waarmee de details van een bestelling getoont kunnen worden
     private JButton button = new JButton("Bekijk details");
+    
+    //De locale lijst van bestellingen
     private List<Bestelling> bestelList = new ArrayList<Bestelling>();
+    
+    //De klantrol, waarvan de bestellingen af komen
     private KlantenRol k;
 
     public KlantBestellingenPaneel(KlantenRol k){

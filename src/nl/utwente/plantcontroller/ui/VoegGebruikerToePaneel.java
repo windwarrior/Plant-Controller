@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import nl.utwente.plantcontroller.model.Fabriek;
-import nl.utwente.plantcontroller.model.Gebruiker;
 import nl.utwente.plantcontroller.model.GebruikersRol;
 import nl.utwente.plantcontroller.model.KlantenRol;
 import nl.utwente.plantcontroller.model.Magazijnrol;
@@ -22,17 +21,29 @@ import nl.utwente.plantcontroller.model.Verkopersrol;
 import nl.utwente.plantcontroller.util.PasswordGenerator;
 
 public class VoegGebruikerToePaneel extends JPanel implements ActionListener{
+    private static final long serialVersionUID = 1L;
+    
+    //De fabriek van het systeem, gebruikt om gebruikers toe te kunnen voegen
     private Fabriek f;
+    
+    //De inlognaam waarmee de gebruiker straks kan inloggen
     private JLabel inlogNaamLabel = new JLabel("Inlognaam:");
+    private JTextField inlogNaamField = new JTextField();
+    //De naam van de gebruiker
     private JLabel naamLabel = new JLabel("Naam:");
+    private JTextField naamField = new JTextField();
+    //Het adres van de nieuwe klant
     private JLabel adresLabel = new JLabel("Adres:");
+    private JTextField adresField = new JTextField();
+    //De rol van de nieuwe gebruiker binnen het systeem
     private JLabel rollenLabel = new JLabel("Rollen:");
     private JTextField errorLabel = new JTextField("Ik ben een error");
-    private JTextField inlogNaamField = new JTextField();
-    private JTextField naamField = new JTextField();
-    private JTextField adresField = new JTextField();
+    
+    
+    //Een box met alle mogelijke rollen binnen het systeem
     private JComboBox rollenBox = new JComboBox();
     
+    //De knop om een gebruiker toe te voegen
     private JButton voegToeKnop = new JButton("Voeg toe");
     
     public VoegGebruikerToePaneel(Fabriek f){

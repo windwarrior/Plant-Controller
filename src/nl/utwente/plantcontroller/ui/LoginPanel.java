@@ -18,15 +18,27 @@ import nl.utwente.plantcontroller.model.Gebruiker;
 public class LoginPanel extends JPanel implements ActionListener{
     private static final long serialVersionUID = 407324739824395920L;
     
+    //Het veld voor de loginnaam
     private JTextField name = new JTextField();
+    //Het veld voor het wachtwoord van de gebruiker
     private JPasswordField passwrd = new JPasswordField();
+    
+    //het label om aan te geven dat het naastliggende veld voor loginnaam is
     private JLabel nameLabel = new JLabel("Naam:");
+    
+    //het label om aan te geven dat het naastliggende veld voor het password is
     private JLabel passwrdLabel = new JLabel("Wachtwoord:");
+    
+    //de knop om mee in te loggen
     private JButton login = new JButton("login");
+    
+    //een label om eventuele errors in te plaatsen
     private JLabel errorLabel = new JLabel("Ik ben een error");
-
+    
+    //De frame waarin dit paneel geplaatst is
     private MainFrame parent;
 
+    //De fabriek van dit systeem
     private Fabriek fabriek;
     
     public LoginPanel(MainFrame parent, Fabriek fabriek){

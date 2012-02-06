@@ -1,7 +1,6 @@
 package nl.utwente.plantcontroller.ui;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -16,21 +15,30 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
-import nl.utwente.plantcontroller.model.BestelItem;
 import nl.utwente.plantcontroller.model.Fabriek;
 import nl.utwente.plantcontroller.model.Onderdeel;
 import nl.utwente.plantcontroller.model.Product;
 
 public class VooraadPaneel extends JPanel implements ActionListener{
+    private static final long serialVersionUID = -2110905219461658479L;
+    
+    //de tabel waar de vooraad in getoont gaat worden
     private JTable table;
     private DefaultTableModel model = new DefaultTableModel();
-    private Fabriek fabriek;
     private String[] columnIdentifiers = {"Product","Vooraad","Waarde per stuk", "Totaalwaarde"};
+    
+    //de fabriek, het beginpunt in het systeem
+    private Fabriek fabriek;
+    
+    //De lijst van producten binnen het systeem
     private JLabel productenLabel = new JLabel("Producten:");
     private JComboBox productenBox = new JComboBox();
+    
+    //Een veld om van een product de vooraad up te daten
     private JLabel vooraadLabel = new JLabel("Nieuwe Vooraad:");
     private JTextField vooraadField = new JTextField();
+    
+    //De knop om daadwerkelijk de vooraad up te daten
     private JButton update = new JButton("Verander vooraad");
     public VooraadPaneel(Fabriek fabriek){
         this.fabriek = fabriek;

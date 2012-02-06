@@ -8,8 +8,18 @@ import javax.swing.JFrame;
 
 import nl.utwente.plantcontroller.model.Fabriek;
 
+/**
+ * Een simpele klasse om makkelijk meerdere loginschermen te maken
+ * @author lennart
+ *
+ */
 public class Starter extends JFrame implements ActionListener{
+    private static final long serialVersionUID = -4519359968387557109L;
+    
+    //De knop om een nieuwe loginsessie te maken
     private JButton newClient = new JButton("Nieuwe login sessie");
+    
+    //De fabriek van het systeem, om logins te kunnen checken
     private Fabriek fabriek;
     public Starter(){
         init();

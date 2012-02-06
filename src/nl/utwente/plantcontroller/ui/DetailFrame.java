@@ -18,13 +18,29 @@ import nl.utwente.plantcontroller.model.Bestelling;
 
 public class DetailFrame extends JFrame{
     private static final long serialVersionUID = -8080019934735683489L;
+    
+    //De bestelling waarmee de Table gevult gaat worden
     private Bestelling b;
+    
+    //Een paneel dat gebruikt gaat worden om componenten op te plaatsen
     private JPanel pan = new JPanel();
+    
+    //Het label waarnaast de naam van de klant geplaatst wordt
     private JLabel klantLabel = new JLabel("Klant: ");
+    
+    //Het TextField waarin de klantnaam komt te staan
     private JTextField klantField = new JTextField();
+    
+    //Het label om aan te geven dat het naastgelegen veld voor het ID van de bestelling is
     private JLabel idLabel = new JLabel("ID: ");
+    
+    //Het id van de bestelling
     private JTextField idField = new JTextField();
+    
+    //Het datamodel van de table
     DefaultTableModel model = new DefaultTableModel();
+    
+    //De tabel waarin de bestelde items geplaatst kunnen worden
     private JTable tableForOrders;
     
     
