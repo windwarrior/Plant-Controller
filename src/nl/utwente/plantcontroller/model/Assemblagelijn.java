@@ -9,6 +9,7 @@ public class Assemblagelijn {
     public void startRun(Productrun r) {
         System.out.println("oi");
         isBusy = true;
+        r.claimVooraden(10);
         product = r.getProductSoort();
         hoeveelheid = r.getHoeveelheid();
         Thread t = new Thread(new Delayer((long)r.getProductSoort().getProductieDuur(), r.getHoeveelheid(), r.getProductSoort(), this));

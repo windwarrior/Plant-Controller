@@ -61,9 +61,11 @@ public class Product extends Onderdeel {
 		    vooraad += amount;
 		}
 		
+		
 		@Override
-		public void setVooraad(int vooraad){
+		public boolean setVooraad(int vooraad){
 		    updateVooraad(vooraad);
+		    return true;
 		}
 		
 		public synchronized int getVooraad(){

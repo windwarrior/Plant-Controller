@@ -12,7 +12,7 @@ public class Productrun {
 	    this.hoeveelheid = hoeveelheid;
 	}
 	
-	public boolean voldoendeVoorraad(Product p, int n) {
+	public boolean voldoendeVoorraad(int n) {
 	    for(Entry<Onderdeel, Integer> onderdeel : productsoort.getSamenstelling().entrySet()){
 	        if(onderdeel.getKey().getVooraad() < onderdeel.getValue() * n) return false;
 	    }
@@ -26,5 +26,13 @@ public class Productrun {
     public int getHoeveelheid() {
         // TODO Auto-generated method stub
         return hoeveelheid;
+    }
+
+    public void claimVooraden(int n) {
+        for(Entry<Onderdeel, Integer> onderdeel : productsoort.getSamenstelling().entrySet()){
+            Onderdeel o = onderdeel.getKey();
+            int hoeveelheid = onderdeel.getValue() * n;
+            o.setVooraad(o.getVooraad() - hoeveelheid);
+        }
     }
 }

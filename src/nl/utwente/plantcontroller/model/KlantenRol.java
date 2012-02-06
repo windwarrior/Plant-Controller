@@ -28,4 +28,9 @@ public class KlantenRol extends GebruikersRol {
 	public String toString(){
 	    return naam;
 	}
+
+    public String getAdres() {
+        return adres;
+    }
+
 }

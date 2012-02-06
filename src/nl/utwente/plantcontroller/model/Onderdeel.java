@@ -26,9 +26,10 @@ public class Onderdeel {
     }
 
     
-    public void setVooraad(int vooraad){
-        if(vooraad < 0) return;
+    public boolean setVooraad(int vooraad){
+        if(this.vooraad < 0) return false;
         this.vooraad = vooraad;
+        return true;
     }
     
     

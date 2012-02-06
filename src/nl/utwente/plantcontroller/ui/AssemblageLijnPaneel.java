@@ -9,7 +9,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -151,9 +153,45 @@ public class AssemblageLijnPaneel extends JPanel implements ActionListener{
         int assemblagelijn = assemblagelijnbox.getSelectedIndex();
         Product p = (Product) productBox.getSelectedItem();
         int hoeveelheid = Integer.parseInt(hoeveelheidTextBox.getText());
-        Assemblagelijn a = fa.getAssemblagelijnen()[assemblagelijn];
-        if(!a.isBusy()){
-            a.startRun(new Productrun(p, hoeveelheid));
+        Productrun pr = new Productrun(p, hoeveelheid);
+        if(pr.voldoendeVoorraad(hoeveelheid)){
+            System.out.println("voldoende vooraad");
+            Assemblagelijn a = fa.getAssemblagelijnen()[assemblagelijn];
+            if(!a.isBusy()){
+                a.startRun(pr);
+            }else{
+                errorLabel.setText("De assemblagelijn is bezet");
+            }
+        }else{
+            System.out.println("onvoldoende vooraad");
+            Object[] options = {"Ja", "Nee", "Misschien"};
+            int n = JOptionPane.showOptionDialog(new JFrame(),
+                    "Onvoldoende vooraad, producten bestellen?",
+                    "items bestellen",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[2]);
+            System.out.println(n);
+            
+            if(n == 2){
+                options = new Object[]{"Ja", "Nee"};
+                n = JOptionPane.showOptionDialog(new JFrame(),
+                        "Geen tijd voor twijfel, producten bestellen?",
+                        "items bestellen",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[0]);
+            }
+            
+            if(n == 0){
+                //er zou nu een mail gestuurt moeten worden naar de inkoop afdeling :)
+            }
+            
         }
+        
     }
 }

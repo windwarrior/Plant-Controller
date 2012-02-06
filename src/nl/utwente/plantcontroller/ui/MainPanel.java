@@ -14,6 +14,7 @@ public class MainPanel extends JTabbedPane implements ChangeListener{
     private AlleBestellingenPaneel a; 
     private VoegGebruikerToePaneel v;
     private AssemblageLijnPaneel ap;
+    private PersonenPaneel pp;
     private VooraadPaneel vp;
     public MainPanel(Fabriek fabriek, Gebruiker g){
         this.fabriek = fabriek;
@@ -23,6 +24,7 @@ public class MainPanel extends JTabbedPane implements ChangeListener{
         v = new VoegGebruikerToePaneel(fabriek);
         ap = new AssemblageLijnPaneel(fabriek);
         vp = new VooraadPaneel(fabriek);
+        pp = new PersonenPaneel(fabriek);
         init();
     }
     
@@ -33,6 +35,7 @@ public class MainPanel extends JTabbedPane implements ChangeListener{
         this.addTab("Gebruiker toevoegen", v);
         this.addTab("AssemblageLijnen", ap);
         this.addTab("Vooraad", vp);
+        this.addTab("Personen", pp);
     }
 
     @Override
@@ -40,6 +43,7 @@ public class MainPanel extends JTabbedPane implements ChangeListener{
         a.updateContents();
         ap.updatePanel();
         vp.updatePanel();
+        pp.updatePanel();
         System.out.println("Updating");
         
     }
