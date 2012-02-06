@@ -19,11 +19,11 @@ public class KlantenRol extends GebruikersRol {
     }
 	
 	public void plaatsBestelling(Bestelling b) {};
-	public void getBestellingen() {};
+	public List<Bestelling> getBestellingen() {
+	    
+	    return bestellingen;
+	};
 	
-	public AccountRechten getRechten(){
-	    return rechten;
-	}
 	
 	public String toString(){
 	    return naam;
@@ -31,6 +31,12 @@ public class KlantenRol extends GebruikersRol {
 
     public String getAdres() {
         return adres;
+    }
+
+    @Override
+    public AccountRechten getAccountRechten() {
+        // TODO Auto-generated method stub
+        return rechten;
     }
 
 }

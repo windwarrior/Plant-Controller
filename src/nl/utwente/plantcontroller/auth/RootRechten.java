@@ -13,21 +13,12 @@ public class RootRechten extends GebruikerRechten {
 
     @Override
     public boolean canPlaceOrder() {
-        return true;
+        //Dit is niet strict noodzakelijk voor een rootgebruiker
+        return false;
     }
 
     @Override
     public boolean canCheckOwnOrder() {
-        return true;
-    }
-
-    @Override
-    public boolean canCheckDetailsOfOrder() {
-        return true;
-    }
-
-    @Override
-    public boolean canCheckOpenOrders() {
         return true;
     }
 
@@ -51,15 +42,6 @@ public class RootRechten extends GebruikerRechten {
         return true;
     }
 
-    @Override
-    public boolean canAssignProductToOrder() {
-        return true;
-    }
-
-    @Override
-    public boolean canAddDeliveryToSystem() {
-        return true;
-    }
 
     @Override
     public boolean canCheckAccounts() {

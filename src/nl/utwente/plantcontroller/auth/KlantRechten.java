@@ -11,9 +11,4 @@ public class KlantRechten extends GebruikerRechten {
         return true;
     }
 
-    @Override
-    public boolean canCheckDetailsOfOrder() {
-        return true;
-    }
-
 }

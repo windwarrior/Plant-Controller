@@ -30,20 +30,6 @@ public interface AccountRechten {
     public boolean canCheckOwnOrder();
 
     /**
-     * true als een gebruiker details van een bestelling kan bekijken
-     * 
-     * @return
-     */
-    public boolean canCheckDetailsOfOrder();
-
-    /**
-     * true als een gebruiker openstaande order kan bekijken
-     * 
-     * @return
-     */
-    public boolean canCheckOpenOrders();
-
-    /**
      * true als een gebruiker een productrun kan starten
      * 
      * @return
@@ -72,22 +58,7 @@ public interface AccountRechten {
     public boolean canCheckAllOrders();
 
     /**
-     * true als een gebruiker een product kan toewijzen aan een order
-     * 
-     * @return
-     */
-    public boolean canAssignProductToOrder();
-
-    /**
-     * true als een gebruiker een aangekomen bestelling kan toevoegen aan het
-     * systeem
-     * 
-     * @return
-     */
-    public boolean canAddDeliveryToSystem();
-
-    /**
-     * truen als een gebruiker gegevens van alle accounts kan bekijken
+     * true als een gebruiker gegevens van alle accounts kan bekijken
      * 
      * @return
      */

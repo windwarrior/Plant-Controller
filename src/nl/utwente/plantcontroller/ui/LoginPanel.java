@@ -91,6 +91,9 @@ public class LoginPanel extends JPanel implements ActionListener{
                System.out.println(s);
                if((g = fabriek.checkGebruiker(name.getText(), s)) != null){
                    errorLabel.setText("Yay!");
+                   if(parent == null) System.out.println("parent null?");
+                   if(fabriek == null) System.out.println("fabriek null?");
+                   if(parent == null) System.out.println("gebruiker null?");
                    parent.setPanel(new MainPanel(fabriek, g));
                }else{
                    errorLabel.setText("login/password is incorrect");

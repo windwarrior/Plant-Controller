@@ -26,7 +26,7 @@ public class Fabriek {
             onderdeelTypen.add(new Onderdeel(3.1, 10, "Onderdeel 5"));
 		    
 		    productTypen = new ArrayList<Product>();
-		    gebruikers.add(new Gebruiker("admin", "admin", new KlantenRol("Admin", "Adminstraat 26")));
+		    gebruikers.add(new Gebruiker("admin", "admin", new RootRol()));
 		    Map<Onderdeel, Integer> onderdeelMap = new HashMap<Onderdeel, Integer>();
 		    onderdeelMap.put(onderdeelTypen.get(0), 4);
 		    onderdeelMap.put(onderdeelTypen.get(2), 2);

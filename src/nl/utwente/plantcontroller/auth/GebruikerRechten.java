@@ -22,15 +22,6 @@ public class GebruikerRechten implements AccountRechten {
         return false;
     }
 
-    @Override
-    public boolean canCheckDetailsOfOrder() {
-        return false;
-    }
-
-    @Override
-    public boolean canCheckOpenOrders() {
-        return false;
-    }
 
     @Override
     public boolean canStartProductRun() {
@@ -49,16 +40,6 @@ public class GebruikerRechten implements AccountRechten {
 
     @Override
     public boolean canCheckAllOrders() {
-        return false;
-    }
-
-    @Override
-    public boolean canAssignProductToOrder() {
-        return false;
-    }
-
-    @Override
-    public boolean canAddDeliveryToSystem() {
         return false;
     }
 
